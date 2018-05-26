@@ -14,4 +14,4 @@ deploy:
   overwrite: true
   file: "git-swc-worksheet.pdf"
   on:
-    branch: master
+    tag: true
