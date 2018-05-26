@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.5in,top=0.8in,bottom=0.8in,headheight=0pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}              % code highlighting gray background
+\usepackage{sectsty}            % section font size
+\usepackage{tikz}
+\usetikzlibrary{shapes.symbols} % cloud
+
+% Section font size
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+% Macro: Remove paragraph spacing
+\newcommand{\unindent}{\vspace{-16pt}}
+% Macro: Empty checkbox per https://tex.stackexchange.com/a/4523 and
+% https://en.wikibooks.org/wiki/LaTeX/Boxes
+\newcommand{\cbox}{\framebox{\phantom{X}}}
+
+\title{Git worksheet for Software Carpentry workshop}
+\date{May 10, 2018}
+
+\pagestyle{fancy}
+\makeatletter
+\lhead{\@title}
+\rhead{\@date}
+\cfoot{}
+\makeatother
+
+% Code highlighting per https://tex.stackexchange.com/a/232183
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+\begin{document}
+\noindent
+Please follow along with the instructor fill to out this worksheet.
+The names in parenthesis are what you will come across in the Git documentation
+but we will stick to the common names for our classroom discussion.
+\\
+
+\noindent
+\begin{tikzpicture}
+  \node [cloud, draw, aspect=2.5, align=center] at (3, 13) {GitHub.com \\ (remote)};
+  \draw (0,12) rectangle (-14, 14)
+  node [anchor=north west] {History (branch)};
+  \draw (-14, 12) node [anchor=south west] {ID (ref)};
+  \draw (0,9) rectangle (-14, 11)
+  node [anchor = north west] {Stage for changes (index)};
+  \draw (0,1) rectangle (-14, 8)
+  node [anchor = north west] {Working directory};
+  \draw (0,1) rectangle (-5, 6)
+  node [anchor = north west] {Ignored};
+\end{tikzpicture}
+
+\section*{Cheatsheet of common git commands}
+\noindent
+\begin{tabular}{ p{2.2in} | p{5in} }
+  \cbox{} \code{git config --global} & Set your preferences.  Usually you only need to tweak these when you're setting up your computer for the first time. \\
+  \cbox{} \code{git init} & Create a new repository.  Alternatively, can also copy an existing repository using \cbox{} \code{git clone} \\
+  \cbox{} \code{git status} & The command you use most often!  Check the state of your repository. \\
+  \cbox{} \code{git add FILE} & Add to the stage. \\
+  \cbox{} \code{git commit} & Record changes from stage. \\
+  \cbox{} \code{git log} &  See previous commits with notes. Show code changes as well with \cbox{}~\code{git log -p} \\
+  \cbox{} \code{git diff} & Compare differences between workspace and repository.  To compare stage to repository, use \cbox{} \code{git diff --staged} \\
+  \cbox{} \code{git checkout REF FILE} & The safest way to undo changes. \\
+  \cbox{} \code{git push} and \code{git pull} & Synchronize between local and remote repositories. \\
+\end{tabular}
+\end{document}
