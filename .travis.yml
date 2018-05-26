@@ -3,9 +3,10 @@
 sudo: false
 language: r
 r: release
-install: make
 pandoc: false
 disable: homebrew
+install: make
+script: true
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
