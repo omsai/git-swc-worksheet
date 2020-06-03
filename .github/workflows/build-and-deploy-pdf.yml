@@ -6,13 +6,14 @@ on:
 
 jobs:
   build:
-    container: raabf/latex-versions:texlive2019
+    runs-on: ubuntu-latest
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build PDF
+        container: raabf/latex-versions:texlive2019
         run: make
 
       - name: Create release
