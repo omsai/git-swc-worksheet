@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: raabf/latex-versions:texlive2019
+    container: raabf/latex-versions:texlive2018
     steps:
 
       - name: Checkout code
